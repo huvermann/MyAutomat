@@ -3,3 +3,6 @@
 ################################################################################
 
 /Colaautomat/bin/Debug
+/Colaautomat/obj/Debug
+/ModelTests/obj/Debug
+/packages
