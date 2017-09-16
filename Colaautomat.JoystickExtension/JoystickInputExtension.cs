@@ -27,6 +27,15 @@ namespace Colaautomat.JoystickExtension
 
             // Subscripe to CloseApplicationMessage to stop the joystick polling.
             eventaggregator.GetEvent<CloseApplicationMessage>().Subscribe(Shutdown);
+            eventaggregator.GetEvent<ProductDeliveredMessage>().Subscribe(OnProductDeliveredMessage);
+        }
+
+        private void OnProductDeliveredMessage(IProduct product)
+        {
+            if (_gamepad != null)
+            {
+                _gamepad.FFB_RightMotor(0.5f, 100);
+            }
         }
 
         /// <summary>
@@ -65,12 +74,15 @@ namespace Colaautomat.JoystickExtension
             if (_gamepad.Y_down) productName = "fanta";
             if (_gamepad.B_down) productName = "cola";
             if (_gamepad.A_down) returnMoneyButton = true;
-            if (_gamepad.Dpad_Down_up) coinValue = 0.2;
+            if (_gamepad.Dpad_Down_down) coinValue = 0.2;
+            if (_gamepad.Dpad_Up_down) coinValue = 0.5;
+            if (_gamepad.Dpad_Right_down) coinValue = 1;
 
             if (!string.IsNullOrEmpty(productName))
             {
                 var product = _storage.getProductByName(productName);
                 _inputManager.SelectProduct(product);
+
             } else
             {
                 if (coinValue != null)

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Messages\CloseApplicationMessage.cs" />
+    <Compile Include="Messages\ProductDeliveredMessage.cs" />
     <Compile Include="Models\AutomatInputManager.cs" />
     <Compile Include="Models\IAutomatInputManager.cs" />
     <Compile Include="Models\IGeldausgabeModel.cs" />

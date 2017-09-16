@@ -1,4 +1,6 @@
-﻿using Prism.Mvvm;
+﻿using Colaautomat.Core.Messages;
+using Prism.Events;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,10 +13,12 @@ namespace Colaautomat.Core.Models
     public class WarenausgabeModel : BindableBase, IWarenausgabeModel
     {
         #region Constructor
+        private IEventAggregator _eventAggregator;
 
-        public WarenausgabeModel()
+        public WarenausgabeModel(IEventAggregator eventaggregator)
         {
             _warenausgabeFach = new ObservableCollection<string>();
+            _eventAggregator = eventaggregator;
         }
         #endregion
 
@@ -28,6 +32,7 @@ namespace Colaautomat.Core.Models
                 log.AddLogEntry(string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
 
                 _warenausgabeFach.Add(string.Format("{0} ist im Ausgabefach", product.ProductName));
+                _eventAggregator.GetEvent<ProductDeliveredMessage>().Publish(product);
                 success = true;
             }
             catch (Exception)
