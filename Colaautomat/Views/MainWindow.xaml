@@ -16,6 +16,7 @@
             <Setter Property="FontSize" Value="20" />
         </Style>
         <converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +26,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"  Grid.Row="0" IsEnabled="{Binding UiIsEnabled}">
+        <StackPanel Orientation="Horizontal"  Grid.Row="0" IsEnabled="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource InverseBooleanConverter}}">
             <TextBlock Text="Münzen" />
             <Button Content="10" Command="{Binding MuenzCommand}" CommandParameter="0.1" />
             <Button Content="20"  Command="{Binding MuenzCommand}" CommandParameter="0.2" />
@@ -34,7 +35,7 @@
             <Button Content="Geldrückgabe" Command="{Binding RueckgabeCommand}" />
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" IsEnabled="{Binding UiIsEnabled}">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" IsEnabled="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource InverseBooleanConverter}}">
             <Button Command="{Binding OrderProductCommand}" CommandParameter="cola"  >
                 <Button.Content>
                     <StackPanel>
@@ -65,9 +66,9 @@
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <TextBlock Text="Geldspeicher:" VerticalAlignment="Center" />
             <TextBlock Text="{Binding Geldspeicher.Geldbetrag, Mode=TwoWay}" TextAlignment="Right" Width="200" Background="Red"  Margin="4" FontSize="45" />
-            <Grid Visibility="{Binding MachineIsBuisy, Converter={StaticResource BoolToVisibilityConverter}}" >
+            <Grid Visibility="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource BoolToVisibilityConverter}}" >
 
-                <ProgressBar  Height="40" Width="400"  IsIndeterminate="{Binding MachineIsBuisy}" />
+                <ProgressBar  Height="40" Width="400"  IsIndeterminate="True" />
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProgressMessage}" />
 
             </Grid>

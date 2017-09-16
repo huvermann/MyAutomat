@@ -89,6 +89,7 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\InversBooleanConverter.cs" />
     <Compile Include="Core\Models\GeldausgabeModel.cs" />
     <Compile Include="Core\Models\GeldspeicherModel.cs" />
     <Compile Include="Core\Models\MaschinenLog.cs" />

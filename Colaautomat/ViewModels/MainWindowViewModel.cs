@@ -16,8 +16,10 @@ namespace Colaautomat.ViewModels
         #region Constructor
         private IProductStorage _productStorage;
         private IOrderService _orderService;
+        
 
         public MainWindowViewModel(
+            IAutomatInputManager inputManager,
             IGeldspeicherModel geldspeicher, 
             IProductStorage productstorage, 
             IMaschinenLog maschinenLog, 
@@ -25,19 +27,19 @@ namespace Colaautomat.ViewModels
             IWarenausgabeModel warenausgabe,
             IOrderService orderService)
         {
+            _automatInputManager = inputManager;
             _geldspeicher = geldspeicher;
             _productStorage = productstorage;
             _maschinenLog = maschinenLog;
             _geldausgabe = geldausgabe;
             _warenausgabe = warenausgabe;
             _orderService = orderService;
-            _uiIsEnabled = true;
 
             _progressMessage = "Bitte warten";
 
             MuenzCommand = new DelegateCommand<string>(async (m) => await OnMuenzeinwurf(m));
             OrderProductCommand = new DelegateCommand<string>(async (n) => await OnProductSelected(n));
-            RueckgabeCommand = new DelegateCommand(OnGeldrueckgabe);
+            RueckgabeCommand = new DelegateCommand(async () => OnGeldrueckgabe());
             ClearOutputCommand = new DelegateCommand(async () => await OnClearOutputAsync());
         }
 
@@ -57,30 +59,19 @@ namespace Colaautomat.ViewModels
         #region EventHandler
         async Task OnProductSelected(string productName)
         {
-            this.MachineIsBuisy = true;
-            var produkt = _productStorage.getProductByName(productName);
-
-            await _orderService.OrderProductAsync(
-                produkt, 
-                _geldspeicher, 
-                _geldausgabe, 
-                _warenausgabe, 
-                _maschinenLog);
-
-            this.MachineIsBuisy = false;
+            var product = _productStorage.getProductByName(productName);
+            await AutomatInputManager.SelectProduct(product);
         }
 
         async Task OnMuenzeinwurf(string Muenze)
         {
-            this.MachineIsBuisy = true;
             double wert = Double.Parse(Muenze, CultureInfo.InvariantCulture);
-            await _geldspeicher.AddCoinAsync(wert, _maschinenLog);
-            this.MachineIsBuisy = false;
+            await AutomatInputManager.CoinInput(wert);
         }
 
-        private void OnGeldrueckgabe()
+        async Task OnGeldrueckgabe()
         {
-            _geldausgabe.GeldRueckgabe(_geldspeicher, _maschinenLog);
+            await AutomatInputManager.ReturnMoneyButton();
         }
         #endregion
 
@@ -110,31 +101,12 @@ namespace Colaautomat.ViewModels
             set { SetProperty(ref _warenausgabe, value); }
         }
 
-        private bool _machineIsBuisy;
-
-        public bool MachineIsBuisy
-        {
-            get { return _machineIsBuisy; }
-            set {
-                SetProperty(ref _machineIsBuisy, value);
-                UiIsEnabled = !value;
-            }
-        }
-
         private IGeldausgabeModel _geldausgabe;
 
         public IGeldausgabeModel Geldausgabe
         {
             get { return _geldausgabe; }
             set { SetProperty(ref _geldausgabe, value); }
-        }
-
-        private bool _uiIsEnabled;
-
-        public bool UiIsEnabled
-        {
-            get { return _uiIsEnabled; }
-            set { SetProperty(ref _uiIsEnabled, value); }
         }
 
         private string _progressMessage;
@@ -145,6 +117,12 @@ namespace Colaautomat.ViewModels
             set { SetProperty(ref _progressMessage, value); }
         }
 
+        private IAutomatInputManager _automatInputManager;
+        public IAutomatInputManager AutomatInputManager
+        {
+            get { return _automatInputManager; }
+            set { SetProperty(ref _automatInputManager, value); }
+        }
 
         #endregion
 
