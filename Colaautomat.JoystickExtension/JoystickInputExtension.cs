@@ -24,11 +24,13 @@ namespace Colaautomat.JoystickExtension
             _log = log;
             _gamepad = InitDevices();
             _storage = storage;
+
+            // Subscripe to CloseApplicationMessage to stop the joystick polling.
             eventaggregator.GetEvent<CloseApplicationMessage>().Subscribe(Shutdown);
         }
 
         /// <summary>
-        /// Stopps polling.
+        /// Stops polling.
         /// </summary>
         public void Shutdown()
         {
