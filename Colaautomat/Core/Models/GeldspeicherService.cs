@@ -9,10 +9,14 @@ namespace Colaautomat.Core.Models
 {
     public class GeldspeicherService : BindableBase, IGeldspeicherModel
     {
+        #region Constructor
         public GeldspeicherService()
         {
             _geldBetrag = 0;
         }
+        #endregion
+
+        #region Logic
         public async Task AddCoinAsync(double wert, IMaschinenLog log)
         {
             
@@ -20,14 +24,6 @@ namespace Colaautomat.Core.Models
             log.AddLogEntry(string.Format("{0} Wurden in den Geldspeicher gelegt.", wert));
             await Task.Delay(500); // Mehr Zeit vertrödeln
             Geldbetrag += wert;
-        }
-
-        private double _geldBetrag;
-
-        public double Geldbetrag
-        {
-            get { return _geldBetrag; }
-            set { SetProperty(ref _geldBetrag, value); }
         }
 
         public void CollectProductPrice(IProduct product, IMaschinenLog log)
@@ -40,5 +36,16 @@ namespace Colaautomat.Core.Models
         {
             return (_geldBetrag >= product.Price);
         }
+        #endregion
+
+        #region Properties
+        private double _geldBetrag;
+
+        public double Geldbetrag
+        {
+            get { return _geldBetrag; }
+            set { SetProperty(ref _geldBetrag, value); }
+        }
+        #endregion
     }
 }
