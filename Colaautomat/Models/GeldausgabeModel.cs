@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colaautomat.Model
+namespace Colaautomat.Models
 {
     public class GeldausgabeModel : BindableBase, IGeldausgabeModel
     {

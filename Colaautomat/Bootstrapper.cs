@@ -1,4 +1,4 @@
-﻿using Colaautomat.Model;
+﻿using Colaautomat.Models;
 using Colaautomat.Views;
 using Microsoft.Practices.Unity;
 using Prism.Unity;

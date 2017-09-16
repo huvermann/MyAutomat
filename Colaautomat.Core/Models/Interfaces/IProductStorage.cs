@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Colaautomat.Models
+namespace Colaautomat.Model
 {
     public interface IProductStorage
     {

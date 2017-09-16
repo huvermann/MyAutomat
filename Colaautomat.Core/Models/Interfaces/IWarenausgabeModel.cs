@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Colaautomat.Models
+namespace Colaautomat.Model
 {
     public interface IWarenausgabeModel
     {

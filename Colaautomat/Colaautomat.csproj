@@ -89,18 +89,18 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Model\GeldausgabeModel.cs" />
-    <Compile Include="Model\GeldspeicherModel.cs" />
+    <Compile Include="Models\GeldausgabeModel.cs" />
+    <Compile Include="Models\GeldspeicherModel.cs" />
     <Compile Include="Interfaces\IGeldausgabeModel.cs" />
     <Compile Include="Interfaces\IGeldspeicherModel.cs" />
     <Compile Include="Interfaces\IMaschinenLog.cs" />
     <Compile Include="Interfaces\IProductStorage.cs" />
     <Compile Include="Interfaces\IWarenausgabeModel.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
-    <Compile Include="Model\MaschinenLog.cs" />
-    <Compile Include="Model\OrderService.cs" />
-    <Compile Include="Model\ProductStorage.cs" />
-    <Compile Include="Model\WarenausgabeModel.cs" />
+    <Compile Include="Models\MaschinenLog.cs" />
+    <Compile Include="Models\OrderService.cs" />
+    <Compile Include="Models\ProductStorage.cs" />
+    <Compile Include="Models\WarenausgabeModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

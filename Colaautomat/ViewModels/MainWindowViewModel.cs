@@ -1,4 +1,4 @@
-﻿using Colaautomat.Model;
+﻿using Colaautomat.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
