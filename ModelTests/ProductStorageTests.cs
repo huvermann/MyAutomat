@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Colaautomat.Model;
+using Colaautomat.Core.Models;
 
 namespace ModelTests
 {

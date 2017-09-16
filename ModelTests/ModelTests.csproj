@@ -65,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Colaautomat.Core\Colaautomat.Core.csproj">
+      <Project>{2bbc2e17-9b7d-4c19-a8d9-64778f827a2d}</Project>
+      <Name>Colaautomat.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Colaautomat\Colaautomat.csproj">
       <Project>{BB109C18-D810-4159-B048-8A0740F386B8}</Project>
       <Name>Colaautomat</Name>

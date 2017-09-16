@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace Colaautomat.Models
+namespace Colaautomat.Core.Models
 {
     public interface IMaschinenLog
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Colaautomat.Models
+namespace Colaautomat.Core.Models
 {
     public class MaschinenLog : BindableBase, IMaschinenLog
     {

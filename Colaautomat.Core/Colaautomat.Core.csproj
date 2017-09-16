@@ -40,14 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Models\Interfaces\IGeldausgabeModel.cs" />
-    <Compile Include="Models\Interfaces\IGeldspeicherModel.cs" />
-    <Compile Include="Models\Interfaces\IMaschinenLog.cs" />
-    <Compile Include="Models\Interfaces\Interface1.cs" />
-    <Compile Include="Models\Interfaces\IOrderService.cs" />
-    <Compile Include="Models\Interfaces\IProductStorage.cs" />
-    <Compile Include="Models\Interfaces\IWarenausgabeModel.cs" />
+    <Compile Include="Models\IGeldausgabeModel.cs" />
+    <Compile Include="Models\IGeldspeicherModel.cs" />
+    <Compile Include="Models\IMaschinenLog.cs" />
+    <Compile Include="Models\IOrderService.cs" />
+    <Compile Include="Models\IProductStorage.cs" />
+    <Compile Include="Models\IWarenausgabeModel.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

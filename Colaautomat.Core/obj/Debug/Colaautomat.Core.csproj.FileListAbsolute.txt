@@ -1,1 +1,5 @@
 D:\Daten\Documents\Visual Studio 2015\Projects\MyAutomat\Colaautomat.Core\obj\Debug\Colaautomat.Core.csprojResolveAssemblyReference.cache
+D:\Daten\Documents\Visual Studio 2015\Projects\MyAutomat\Colaautomat.Core\bin\Debug\Colaautomat.Core.dll
+D:\Daten\Documents\Visual Studio 2015\Projects\MyAutomat\Colaautomat.Core\bin\Debug\Colaautomat.Core.pdb
+D:\Daten\Documents\Visual Studio 2015\Projects\MyAutomat\Colaautomat.Core\obj\Debug\Colaautomat.Core.dll
+D:\Daten\Documents\Visual Studio 2015\Projects\MyAutomat\Colaautomat.Core\obj\Debug\Colaautomat.Core.pdb
