@@ -27,7 +27,7 @@ namespace Colaautomat
             RegisterTypeIfMissing(typeof(IServiceLocator), typeof(UnityServiceLocatorAdapter), true);
             Container.RegisterType<IMaschinenLog, MaschinenLog>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IWarenausgabeModel, WarenausgabeModel>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<IGeldausgabeModel, GeldausgabeModel>(new ContainerControlledLifetimeManager));
+            Container.RegisterType<IGeldausgabeModel, GeldausgabeModel>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IGeldspeicherModel, GeldspeicherModel>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IProductStorage, ProductStorage>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IOrderService, OrderService>(new ContainerControlledLifetimeManager());
