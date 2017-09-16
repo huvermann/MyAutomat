@@ -91,6 +91,11 @@ namespace Colaautomat.Core.Models
             _log.AddLogEntry(string.Format("Fehler aufgetreten: {0}", exception.Message));
         }
 
+        public void ShutDown()
+        {
+            throw new NotImplementedException();
+        }
+
         private bool _isOrdering;
 
         public bool IsOrdering

@@ -1,4 +1,5 @@
 ﻿using Colaautomat.Core.Models;
+using Microsoft.Practices.ServiceLocation;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -19,6 +20,7 @@ namespace Colaautomat.ViewModels
         
 
         public MainWindowViewModel(
+            IServiceLocator serviceLocator,
             IAutomatInputManager inputManager,
             IGeldspeicherModel geldspeicher, 
             IProductStorage productstorage, 
@@ -41,6 +43,11 @@ namespace Colaautomat.ViewModels
             OrderProductCommand = new DelegateCommand<string>(async (n) => await OnProductSelected(n));
             RueckgabeCommand = new DelegateCommand(async () => OnGeldrueckgabe());
             ClearOutputCommand = new DelegateCommand(async () => await OnClearOutputAsync());
+        }
+
+        public void OnExit()
+        {
+            _automatInputManager.ShutDown();
         }
 
         async Task OnClearOutputAsync()

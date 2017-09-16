@@ -153,6 +153,10 @@
       <Project>{2bbc2e17-9b7d-4c19-a8d9-64778f827a2d}</Project>
       <Name>Colaautomat.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Colaautomat.JoystickExtension\Colaautomat.JoystickExtension.csproj">
+      <Project>{2a9d4934-718f-4f68-acac-303ee88cdcc4}</Project>
+      <Name>Colaautomat.JoystickExtension</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

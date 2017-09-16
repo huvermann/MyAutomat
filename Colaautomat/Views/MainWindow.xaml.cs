@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Colaautomat.ViewModels;
+using Prism.Events;
+using Colaautomat.Core.Messages;
 
 namespace Colaautomat.Views
 {
@@ -20,9 +22,18 @@ namespace Colaautomat.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private IEventAggregator _eventAggregator;
+
+        public MainWindow(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
             InitializeComponent();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            _eventAggregator.GetEvent<CloseApplicationMessage>().Publish();
+            base.OnClosed(e);
         }
     }
 }

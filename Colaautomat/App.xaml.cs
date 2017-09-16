@@ -21,4 +21,5 @@ namespace Colaautomat
             bootstrapper.Run();
         }
     }
+
 }
