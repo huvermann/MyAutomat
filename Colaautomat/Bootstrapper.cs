@@ -25,11 +25,11 @@ namespace Colaautomat
         {
             RegisterTypeIfMissing(typeof(IEventAggregator), typeof(EventAggregator), true);
             RegisterTypeIfMissing(typeof(IServiceLocator), typeof(UnityServiceLocatorAdapter), true);
-            Container.RegisterType<IMaschinenLog, MaschinenLog>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<IWarenausgabeModel, WarenausgabeModel>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<IGeldausgabeModel, GeldausgabeModel>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<IGeldspeicherModel, GeldspeicherModel>(new ContainerControlledLifetimeManager());
-            Container.RegisterType<IProductStorage, ProductStorage>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IMaschinenLog, MaschinenLogSimulator>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IWarenausgabeModel, WarenausgabeSimulator>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IGeldausgabeModel, GeldausgabeSimulator>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IGeldspeicherModel, GeldspeicherService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IProductStorage, ProductStorageSimulator>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IOrderService, OrderService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IAutomatInputManager, AutomatInputManager>(new ContainerControlledLifetimeManager());
             //Container.RegisterInstance<JoystickInputExtension>(Container.Resolve<JoystickInputExtension>());

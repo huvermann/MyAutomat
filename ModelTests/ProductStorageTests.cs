@@ -7,18 +7,18 @@ namespace ModelTests
     [TestClass]
     public class ProductStorageTests
     {
-        private ProductStorage _storage;
+        private ProductStorageSimulator _storage;
 
         [TestInitialize]
         public void TestIinitializer()
         {
-            _storage = new ProductStorage();
+            _storage = new ProductStorageSimulator();
         }
 
         [TestMethod]
         public void GetProductReturnsColaProductTest()
         {
-            ProductStorage storage = new ProductStorage();
+            ProductStorageSimulator storage = new ProductStorageSimulator();
             var product = storage.getProductByName("cola");
             Assert.IsInstanceOfType(product, typeof(Product));
         }

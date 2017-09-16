@@ -8,7 +8,7 @@ namespace Colaautomat.Core.Models
 {
 
 
-    public class ProductStorage : IProductStorage
+    public class ProductStorageSimulator : IProductStorage
     {
         const int anzCola = 3;
         const int anzSprite = 4;
@@ -16,7 +16,7 @@ namespace Colaautomat.Core.Models
 
         private Dictionary<string, Product> storage;
 
-        public ProductStorage()
+        public ProductStorageSimulator()
         {
             FillStorage(anzCola, anzSprite, anzColaZero);
         }

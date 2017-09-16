@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class GeldausgabeModel : BindableBase, IGeldausgabeModel
+    public class GeldausgabeSimulator : BindableBase, IGeldausgabeModel
     {
         #region Constructor
 
-        public GeldausgabeModel()
+        public GeldausgabeSimulator()
         {
             _geldausgabeInfo = new ObservableCollection<string>();
         }

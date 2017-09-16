@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class MaschinenLog : BindableBase, IMaschinenLog
+    public class MaschinenLogSimulator : BindableBase, IMaschinenLog
     {
-        public MaschinenLog()
+        public MaschinenLogSimulator()
         {
             _logEntries = new ObservableCollection<string>();
         }
