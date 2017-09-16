@@ -8,3 +8,5 @@
 /packages
 /.vs/Colaautomat/v14/.suo
 /ModelTests/bin/Debug
+/Colaautomat.Core/bin/Debug
+/Colaautomat.Core/obj/Debug
