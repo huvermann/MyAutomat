@@ -7,7 +7,7 @@ namespace Colaautomat.Core.Models
         double Geldbetrag { get; set; }
 
         Task AddCoinAsync(double wert, IMaschinenLog log);
-        void CollectProductPrice(Product product, IMaschinenLog log);
-        bool CanBuyProduct(Product product);
+        void CollectProductPrice(IProduct product, IMaschinenLog log);
+        bool CanBuyProduct(IProduct product);
     }
 }

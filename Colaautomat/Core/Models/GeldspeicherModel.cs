@@ -30,13 +30,13 @@ namespace Colaautomat.Core.Models
             set { SetProperty(ref _geldBetrag, value); }
         }
 
-        public void CollectProductPrice(Product product, IMaschinenLog log)
+        public void CollectProductPrice(IProduct product, IMaschinenLog log)
         {
             Geldbetrag -= product.Price;
             log.AddLogEntry(string.Format("Der Geldspeicher enthält nun: {0}", _geldBetrag));
         }
 
-        public bool CanBuyProduct(Product product)
+        public bool CanBuyProduct(IProduct product)
         {
             return (_geldBetrag >= product.Price);
         }

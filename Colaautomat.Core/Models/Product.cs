@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class Product
+    public class Product : IProduct
     {
         public string ProductName { get; set; }
         public double Price { get; set; }

@@ -30,7 +30,7 @@ namespace Colaautomat.Core.Models
             storage.Add("colazero", new Product() { ProductName = "Cola Zero", Price = 1, Count = colazero });
         }
 
-        public Product getProductByName(string productname)
+        public IProduct getProductByName(string productname)
         {
             return storage[productname];
         }

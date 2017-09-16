@@ -19,7 +19,7 @@ namespace Colaautomat.Core.Models
         #endregion
 
         #region Programmlogic zur Warenausgabe
-        public bool ProduktAusgabe(Product product, IMaschinenLog log)
+        public bool ProduktAusgabe(IProduct product, IMaschinenLog log)
         {
             bool success = false;
             try
@@ -40,6 +40,7 @@ namespace Colaautomat.Core.Models
 
             return success;
         }
+
         #endregion
 
         #region properties

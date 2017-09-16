@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Colaautomat.Model;
+using Colaautomat.Core.Models;
 using Moq;
 using System.Threading.Tasks;
 

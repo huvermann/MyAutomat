@@ -8,7 +8,7 @@ namespace Colaautomat.Core.Models
 {
     public class OrderService : IOrderService
     {
-        public async Task OrderProductAsync(Product product, IGeldspeicherModel geldspeicher, IGeldausgabeModel geldausgabe, IWarenausgabeModel warenausgabe, IMaschinenLog log)
+        public async Task OrderProductAsync(IProduct product, IGeldspeicherModel geldspeicher, IGeldausgabeModel geldausgabe, IWarenausgabeModel warenausgabe, IMaschinenLog log)
         {
             await Task.Delay(1000);
             // Produkt auf Lager und genug geld im speicher
@@ -33,7 +33,7 @@ namespace Colaautomat.Core.Models
 
         }
 
-        private string CheckError(Product product, IGeldspeicherModel geldspeicher)
+        private string CheckError(IProduct product, IGeldspeicherModel geldspeicher)
         {
             if (!product.IsInStock())
             {

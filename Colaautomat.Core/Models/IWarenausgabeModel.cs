@@ -6,6 +6,6 @@ namespace Colaautomat.Core.Models
     {
         ObservableCollection<string> WarenausgabeFach { get; set; }
 
-        bool ProduktAusgabe(Product product, IMaschinenLog log);
+        bool ProduktAusgabe(IProduct product, IMaschinenLog log);
     }
 }
