@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class WarenausgabeSimulator : BindableBase, IWarenausgabeModel
+    public class WarenausgabeSimulator : BindableBase, IWarenausgabeModel, IWarenausgabeSimulator
     {
         #region Constructor
         private IEventAggregator _eventAggregator;

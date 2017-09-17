@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class GeldausgabeSimulator : BindableBase, IGeldausgabeModel
+    public class GeldausgabeSimulator : BindableBase, IGeldausgabeModel, IGeldausgabeSimulator
     {
         #region Constructor
 

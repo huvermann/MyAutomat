@@ -25,8 +25,8 @@ namespace Colaautomat.ViewModels
             IGeldspeicherModel geldspeicher, 
             IProductStorage productstorage, 
             IMaschinenLog maschinenLog, 
-            IGeldausgabeModel geldausgabe, 
-            IWarenausgabeModel warenausgabe,
+            IGeldausgabeSimulator geldausgabe, 
+            IWarenausgabeSimulator warenausgabe,
             IOrderService orderService)
         {
             _automatInputManager = inputManager;
@@ -100,17 +100,17 @@ namespace Colaautomat.ViewModels
             set { SetProperty(ref _maschinenLog, value); }
         }
 
-        private IWarenausgabeModel _warenausgabe;
+        private IWarenausgabeSimulator _warenausgabe;
 
-        public IWarenausgabeModel Warenausgabe
+        public IWarenausgabeSimulator Warenausgabe
         {
             get { return _warenausgabe; }
             set { SetProperty(ref _warenausgabe, value); }
         }
 
-        private IGeldausgabeModel _geldausgabe;
+        private IGeldausgabeSimulator _geldausgabe;
 
-        public IGeldausgabeModel Geldausgabe
+        public IGeldausgabeSimulator Geldausgabe
         {
             get { return _geldausgabe; }
             set { SetProperty(ref _geldausgabe, value); }

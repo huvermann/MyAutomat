@@ -31,6 +31,8 @@ namespace Colaautomat
             Container.RegisterType<IGeldspeicherModel, GeldspeicherService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IProductStorage, ProductStorageSimulator>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IOrderService, OrderService>(new ContainerControlledLifetimeManager());
+            Container.RegisterInstance<IGeldausgabeSimulator>((GeldausgabeSimulator)Container.Resolve<IGeldausgabeModel>());
+            Container.RegisterInstance<IWarenausgabeSimulator>((WarenausgabeSimulator)Container.Resolve<IWarenausgabeModel>());
             Container.RegisterType<IAutomatInputManager, AutomatInputManager>(new ContainerControlledLifetimeManager());
             //Container.RegisterInstance<JoystickInputExtension>(Container.Resolve<JoystickInputExtension>());
             base.ConfigureContainer();

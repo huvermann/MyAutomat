@@ -92,6 +92,8 @@
     <Compile Include="Converters\InversBooleanConverter.cs" />
     <Compile Include="Core\Models\GeldausgabeSimulator.cs" />
     <Compile Include="Core\Models\GeldspeicherService.cs" />
+    <Compile Include="Core\Models\IGeldausgabeSimulator.cs" />
+    <Compile Include="Core\Models\IWarenausgabeSimulator.cs" />
     <Compile Include="Core\Models\MaschinenLogSimulator.cs" />
     <Compile Include="Core\Models\OrderService.cs" />
     <Compile Include="Core\Models\ProductStorageSimulator.cs" />
