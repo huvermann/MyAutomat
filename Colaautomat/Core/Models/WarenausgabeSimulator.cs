@@ -20,16 +20,19 @@ namespace Colaautomat.Core.Models
         }
         #endregion
 
-        #region Programmlogic zur Warenausgabe
+        #region ProgrammlogiK zur Warenausgabe
         public bool ProduktAusgabe(IProduct product)
         {
             bool success = false;
             try
             {
                 // Hier muss das Produkt freigegeben werden
-                _logger.AddLogEntry("WarenausgabeSimulator", string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
-
+                _logger.AddLogEntry(this.GetType().ToString(), string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
                 _warenausgabeFach.Add(string.Format("{0} ist im Ausgabefach", product.ProductName));
+                // Anzahl Produkte dezimieren
+                product.Count -= 1;
+                _logger.AddLogEntry("WarenausgabeSimulator", string.Format("Es sind noch {0} {1} im Gerät", product.Count, product.ProductName));
+                // Auslieferung Auslieferungsevent publizieren.
                 _eventAggregator.GetEvent<ProductDeliveredMessage>().Publish(product);
                 success = true;
             }

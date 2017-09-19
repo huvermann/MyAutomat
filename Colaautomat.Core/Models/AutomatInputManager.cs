@@ -11,17 +11,11 @@ namespace Colaautomat.Core.Models
     public class AutomatInputManager : BindableBase, IAutomatInputManager
     {
         private IOrderService _orderService;
-        private IGeldspeicherService _geldspeicher;
-        private IGeldausgabeService _geldausgabe;
-        private IWarenausgabeService _warenausgabe;
         private IMaschinenLog _logger;
 
-        public AutomatInputManager(IOrderService orderService, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe, IMaschinenLog log)
+        public AutomatInputManager(IOrderService orderService, IMaschinenLog log)
         {
             _orderService = orderService;
-            _geldspeicher = geldspeicher;
-            _geldausgabe = geldausgabe;
-            _warenausgabe = warenausgabe;
             _logger = log;
         }
 
@@ -37,7 +31,7 @@ namespace Colaautomat.Core.Models
                 {
 
                     IsOrdering = true;
-                    await _orderService.OrderProductAsync(product, _geldspeicher, _geldausgabe, _warenausgabe);
+                    await _orderService.OrderProductAsync(product);
                     IsOrdering = false;
                 }
             }
@@ -55,7 +49,9 @@ namespace Colaautomat.Core.Models
             {
                 if (!IsOrdering)
                 {
-                    _geldausgabe.GeldRueckgabe(_geldspeicher);
+                    IsOrdering = true;
+                    await _orderService.ReturnAllMoneyAsync();
+                    IsOrdering = false;
                 }
                 
             }
@@ -73,7 +69,7 @@ namespace Colaautomat.Core.Models
                 if (!IsOrdering)
                 {
                     IsOrdering = true;
-                    await _geldspeicher.AddCoinAsync(amount);
+                    await _orderService.CoinInputAsync(amount);
                     IsOrdering = false;
                 }
 
@@ -89,6 +85,7 @@ namespace Colaautomat.Core.Models
         private void HandleError(AutomatException exception)
         {
             _logger.AddLogEntry("InputManager", string.Format("Fehler aufgetreten: {0}", exception.Message));
+            IsOrdering = false;
         }
 
         private bool _isOrdering;

@@ -12,7 +12,7 @@ namespace Colaautomat.Core.Models
     {
         const int anzCola = 3;
         const int anzSprite = 4;
-        const int anzColaZero = 2;
+        const int anzColaZero = 1;
 
         private Dictionary<string, Product> storage;
 

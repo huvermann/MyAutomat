@@ -4,6 +4,8 @@ namespace Colaautomat.Core.Models
 {
     public interface IOrderService
     {
-        Task OrderProductAsync(IProduct product, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe);
+        Task OrderProductAsync(IProduct product);
+        Task ReturnAllMoneyAsync();
+        Task CoinInputAsync(double amount);
     }
 }

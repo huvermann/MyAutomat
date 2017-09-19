@@ -10,45 +10,51 @@ namespace Colaautomat.Core.Models
     {
         #region Constructor
         private IMaschinenLog _machineLog;
+        IGeldspeicherService _geldspeicher;
+        IGeldausgabeService _geldausgabe;
+        IWarenausgabeService _warenausgabe;
 
-        public OrderService(IMaschinenLog machineLog)
+        public OrderService(IMaschinenLog machineLog, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe)
         {
             _machineLog = machineLog;
+            _geldspeicher = geldspeicher;
+            _geldausgabe = geldausgabe;
+            _warenausgabe = warenausgabe;
         }
         #endregion
 
-        public async Task OrderProductAsync(IProduct product, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe)
+        public async Task OrderProductAsync(IProduct product)
         {
             await Task.Delay(1000);
             // Produkt auf Lager und genug geld im speicher
 
-            if (product.IsInStock() && geldspeicher.CanBuyProduct(product))
+            if (product.IsInStock() && _geldspeicher.CanBuyProduct(product))
             {
-                if (warenausgabe.ProduktAusgabe(product))
+                if (_warenausgabe.ProduktAusgabe(product))
                 {
                     await Task.Delay(500);
-                    geldspeicher.CollectProductPrice(product);
+                    _geldspeicher.CollectProductPrice(product);
 
                 }
                 await Task.Delay(500);
-                geldausgabe.GeldRueckgabe(geldspeicher);
+                _geldausgabe.GeldRueckgabe(_geldspeicher);
 
             }
             else
             {
                 await Task.Delay(500);
-                _machineLog.AddLogEntry("OrderService", CheckError(product, geldspeicher));
+                _machineLog.AddLogEntry("OrderService", CheckError(product));
             }
 
         }
 
-        private string CheckError(IProduct product, IGeldspeicherService geldspeicher)
+        private string CheckError(IProduct product)
         {
             if (!product.IsInStock())
             {
                 return string.Format("Keine {0} mehr da!", product.ProductName);
             }
-            if (!geldspeicher.CanBuyProduct(product))
+            if (!_geldspeicher.CanBuyProduct(product))
             {
                 return "Nicht genug Geld im Automaten um das Produkt zu kaufen.";
             }
@@ -56,6 +62,16 @@ namespace Colaautomat.Core.Models
             {
                 return "Unbekannter Fehler!";
             }
+        }
+
+        public async Task ReturnAllMoneyAsync()
+        {
+            _geldausgabe.GeldRueckgabe(_geldspeicher);
+        }
+
+        public async Task CoinInputAsync(double amount)
+        {
+            await _geldspeicher.AddCoinAsync(amount);
         }
     }
 }
