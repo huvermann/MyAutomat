@@ -14,22 +14,24 @@ namespace Colaautomat.Core.Models
     {
         #region Constructor
         private IEventAggregator _eventAggregator;
+        private IMaschinenLog _logger;
 
-        public WarenausgabeSimulator(IEventAggregator eventaggregator)
+        public WarenausgabeSimulator(IEventAggregator eventaggregator, IMaschinenLog logger)
         {
             _warenausgabeFach = new ObservableCollection<string>();
             _eventAggregator = eventaggregator;
+            _logger = logger;
         }
         #endregion
 
         #region Programmlogic zur Warenausgabe
-        public bool ProduktAusgabe(IProduct product, IMaschinenLog log)
+        public bool ProduktAusgabe(IProduct product)
         {
             bool success = false;
             try
             {
                 // Hier muss das Produkt freigegeben werden
-                log.AddLogEntry(string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
+                _logger.AddLogEntry(string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
 
                 _warenausgabeFach.Add(string.Format("{0} ist im Ausgabefach", product.ProductName));
                 _eventAggregator.GetEvent<ProductDeliveredMessage>().Publish(product);
@@ -38,7 +40,7 @@ namespace Colaautomat.Core.Models
             catch (Exception)
             {
 
-                log.AddLogEntry("Die Dose klemmt oder kann nicht augegeben werden.");
+                _logger.AddLogEntry("Die Dose klemmt oder kann nicht augegeben werden.");
                 success = false;
             }
            

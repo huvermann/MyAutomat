@@ -24,7 +24,7 @@ namespace Colaautomat.Core.Models
 
             if (product.IsInStock() && geldspeicher.CanBuyProduct(product))
             {
-                if (warenausgabe.ProduktAusgabe(product, _machineLog))
+                if (warenausgabe.ProduktAusgabe(product))
                 {
                     await Task.Delay(500);
                     geldspeicher.CollectProductPrice(product, _machineLog);
