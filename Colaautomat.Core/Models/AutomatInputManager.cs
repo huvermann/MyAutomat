@@ -73,7 +73,7 @@ namespace Colaautomat.Core.Models
                 if (!IsOrdering)
                 {
                     IsOrdering = true;
-                    await _geldspeicher.AddCoinAsync(amount, _log);
+                    await _geldspeicher.AddCoinAsync(amount);
                     IsOrdering = false;
                 }
 

@@ -86,7 +86,7 @@ namespace ModelTests
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
             _WarenausgabeMock.Setup(w => w.ProduktAusgabe(product)).Returns(true);
             _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object, _logMock.Object));
-            _geldspeicherMock.Setup(g => g.CollectProductPrice(product, _logMock.Object));
+            _geldspeicherMock.Setup(g => g.CollectProductPrice(product));
 
             await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
