@@ -37,7 +37,7 @@ namespace Colaautomat.Core.Models
                 {
 
                     IsOrdering = true;
-                    await _orderService.OrderProductAsync(product, _geldspeicher, _geldausgabe, _warenausgabe, _log);
+                    await _orderService.OrderProductAsync(product, _geldspeicher, _geldausgabe, _warenausgabe);
                     IsOrdering = false;
                 }
             }

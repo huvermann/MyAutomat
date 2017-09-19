@@ -24,12 +24,13 @@ namespace ModelTests
         [ClassInitialize()]
         public static void MyClassInitialize(TestContext testContext)
         {
-            _orderService = new OrderService();
+           
             var repository = new MockRepository(MockBehavior.Strict) { DefaultValue = DefaultValue.Mock };
             _geldspeicherMock = repository.Create<IGeldspeicherService>();
             _geldausgabeMock = repository.Create<IGeldausgabeService>();
             _WarenausgabeMock = repository.Create<IWarenausgabeService>();
             _logMock = repository.Create<IMaschinenLog>();
+            _orderService = new OrderService(_logMock.Object);
         }
 
         private TestContext testContextInstance;
@@ -87,7 +88,7 @@ namespace ModelTests
             _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object, _logMock.Object));
             _geldspeicherMock.Setup(g => g.CollectProductPrice(product, _logMock.Object));
 
-            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object, _logMock.Object);
+            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
 
         [TestMethod]
@@ -99,7 +100,7 @@ namespace ModelTests
             product.Price = 1;
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
             _logMock.Setup(log => log.AddLogEntry(expected));
-            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object, _logMock.Object);
+            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
 
         }
 
@@ -110,7 +111,7 @@ namespace ModelTests
             string expected = "Nicht genug Geld im Automaten um das Produkt zu kaufen.";
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(false);
             _logMock.Setup(log => log.AddLogEntry(expected));
-            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object, _logMock.Object);
+            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
 
         [TestMethod]
@@ -120,7 +121,7 @@ namespace ModelTests
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
             _WarenausgabeMock.Setup(w => w.ProduktAusgabe(product, _logMock.Object)).Returns(false);
             _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object, _logMock.Object));
-            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object, _logMock.Object);
+            await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
     }
 }

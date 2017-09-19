@@ -8,27 +8,36 @@ namespace Colaautomat.Core.Models
 {
     public class OrderService : IOrderService
     {
-        public async Task OrderProductAsync(IProduct product, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe, IMaschinenLog log)
+        #region Constructor
+        private IMaschinenLog _machineLog;
+
+        public OrderService(IMaschinenLog machineLog)
+        {
+            _machineLog = machineLog;
+        }
+        #endregion
+
+        public async Task OrderProductAsync(IProduct product, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe)
         {
             await Task.Delay(1000);
             // Produkt auf Lager und genug geld im speicher
 
             if (product.IsInStock() && geldspeicher.CanBuyProduct(product))
             {
-                if (warenausgabe.ProduktAusgabe(product, log))
+                if (warenausgabe.ProduktAusgabe(product, _machineLog))
                 {
                     await Task.Delay(500);
-                    geldspeicher.CollectProductPrice(product, log);
+                    geldspeicher.CollectProductPrice(product, _machineLog);
 
                 }
                 await Task.Delay(500);
-                geldausgabe.GeldRueckgabe(geldspeicher, log);
+                geldausgabe.GeldRueckgabe(geldspeicher, _machineLog);
 
             }
             else
             {
                 await Task.Delay(500);
-                log.AddLogEntry(CheckError(product, geldspeicher));
+                _machineLog.AddLogEntry(CheckError(product, geldspeicher));
             }
 
         }
