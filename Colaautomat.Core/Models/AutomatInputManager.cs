@@ -14,7 +14,7 @@ namespace Colaautomat.Core.Models
         private IGeldspeicherService _geldspeicher;
         private IGeldausgabeService _geldausgabe;
         private IWarenausgabeService _warenausgabe;
-        private IMaschinenLog _log;
+        private IMaschinenLog _logger;
 
         public AutomatInputManager(IOrderService orderService, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe, IMaschinenLog log)
         {
@@ -22,7 +22,7 @@ namespace Colaautomat.Core.Models
             _geldspeicher = geldspeicher;
             _geldausgabe = geldausgabe;
             _warenausgabe = warenausgabe;
-            _log = log;
+            _logger = log;
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Colaautomat.Core.Models
 
         private void HandleError(AutomatException exception)
         {
-            _log.AddLogEntry(string.Format("Fehler aufgetreten: {0}", exception.Message));
+            _logger.AddLogEntry(string.Format("Fehler aufgetreten: {0}", exception.Message));
         }
 
         private bool _isOrdering;

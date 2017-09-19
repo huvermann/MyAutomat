@@ -14,14 +14,14 @@ namespace Colaautomat.JoystickExtension
     public class JoystickInputExtension
     {
         private IAutomatInputManager _inputManager;
-        private IMaschinenLog _log;
+        private IMaschinenLog _logger;
         private X.Gamepad _gamepad;
         private IProductStorageService _storage;
 
         public JoystickInputExtension(IEventAggregator eventaggregator, IAutomatInputManager inputManager, IProductStorageService storage, IMaschinenLog log)
         {
             _inputManager = inputManager;
-            _log = log;
+            _logger = log;
             _gamepad = InitDevices();
             _storage = storage;
 
