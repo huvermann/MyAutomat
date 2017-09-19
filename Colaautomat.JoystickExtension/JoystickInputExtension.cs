@@ -16,9 +16,9 @@ namespace Colaautomat.JoystickExtension
         private IAutomatInputManager _inputManager;
         private IMaschinenLog _log;
         private X.Gamepad _gamepad;
-        private IProductStorage _storage;
+        private IProductStorageService _storage;
 
-        public JoystickInputExtension(IEventAggregator eventaggregator, IAutomatInputManager inputManager, IProductStorage storage, IMaschinenLog log)
+        public JoystickInputExtension(IEventAggregator eventaggregator, IAutomatInputManager inputManager, IProductStorageService storage, IMaschinenLog log)
         {
             _inputManager = inputManager;
             _log = log;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class GeldspeicherService : BindableBase, IGeldspeicherModel
+    public class GeldspeicherService : BindableBase, IGeldspeicherService
     {
         #region Constructor
         public GeldspeicherService()

@@ -11,12 +11,12 @@ namespace Colaautomat.Core.Models
     public class AutomatInputManager : BindableBase, IAutomatInputManager
     {
         private IOrderService _orderService;
-        private IGeldspeicherModel _geldspeicher;
-        private IGeldausgabeModel _geldausgabe;
-        private IWarenausgabeModel _warenausgabe;
+        private IGeldspeicherService _geldspeicher;
+        private IGeldausgabeService _geldausgabe;
+        private IWarenausgabeService _warenausgabe;
         private IMaschinenLog _log;
 
-        public AutomatInputManager(IOrderService orderService, IGeldspeicherModel geldspeicher, IGeldausgabeModel geldausgabe, IWarenausgabeModel warenausgabe, IMaschinenLog log)
+        public AutomatInputManager(IOrderService orderService, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe, IMaschinenLog log)
         {
             _orderService = orderService;
             _geldspeicher = geldspeicher;
@@ -89,11 +89,6 @@ namespace Colaautomat.Core.Models
         private void HandleError(AutomatException exception)
         {
             _log.AddLogEntry(string.Format("Fehler aufgetreten: {0}", exception.Message));
-        }
-
-        public void ShutDown()
-        {
-            throw new NotImplementedException();
         }
 
         private bool _isOrdering;

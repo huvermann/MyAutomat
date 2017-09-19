@@ -9,6 +9,5 @@ namespace Colaautomat.Core.Models
         Task<bool> CoinInput(double amount);
         Task<bool> ReturnMoneyButton();
         Task<bool> SelectProduct(IProduct product);
-        void ShutDown();
     }
 }

@@ -26,17 +26,17 @@ namespace ModelTests
         {
             _orderService = new OrderService();
             var repository = new MockRepository(MockBehavior.Strict) { DefaultValue = DefaultValue.Mock };
-            _geldspeicherMock = repository.Create<IGeldspeicherModel>();
-            _geldausgabeMock = repository.Create<IGeldausgabeModel>();
-            _WarenausgabeMock = repository.Create<IWarenausgabeModel>();
+            _geldspeicherMock = repository.Create<IGeldspeicherService>();
+            _geldausgabeMock = repository.Create<IGeldausgabeService>();
+            _WarenausgabeMock = repository.Create<IWarenausgabeService>();
             _logMock = repository.Create<IMaschinenLog>();
         }
 
         private TestContext testContextInstance;
         private static OrderService _orderService;
-        private static Mock<IGeldspeicherModel> _geldspeicherMock;
-        private static Mock<IGeldausgabeModel> _geldausgabeMock;
-        private static Mock<IWarenausgabeModel> _WarenausgabeMock;
+        private static Mock<IGeldspeicherService> _geldspeicherMock;
+        private static Mock<IGeldausgabeService> _geldausgabeMock;
+        private static Mock<IWarenausgabeService> _WarenausgabeMock;
         private static Mock<IMaschinenLog> _logMock;
 
         /// <summary>

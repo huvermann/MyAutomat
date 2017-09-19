@@ -48,13 +48,13 @@
     <Compile Include="Messages\ProductDeliveredMessage.cs" />
     <Compile Include="Models\AutomatInputManager.cs" />
     <Compile Include="Models\IAutomatInputManager.cs" />
-    <Compile Include="Models\IGeldausgabeModel.cs" />
-    <Compile Include="Models\IGeldspeicherModel.cs" />
+    <Compile Include="Models\IGeldausgabeService.cs" />
+    <Compile Include="Models\IGeldspeicherService.cs" />
     <Compile Include="Models\IMaschinenLog.cs" />
     <Compile Include="Models\IOrderService.cs" />
     <Compile Include="Models\IProduct.cs" />
-    <Compile Include="Models\IProductStorage.cs" />
-    <Compile Include="Models\IWarenausgabeModel.cs" />
+    <Compile Include="Models\IProductStorageService.cs" />
+    <Compile Include="Models\IWarenausgabeService.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AutomatException.cs" />

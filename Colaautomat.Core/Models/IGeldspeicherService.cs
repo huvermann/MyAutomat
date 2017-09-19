@@ -2,7 +2,7 @@
 
 namespace Colaautomat.Core.Models
 {
-    public interface IGeldspeicherModel
+    public interface IGeldspeicherService
     {
         double Geldbetrag { get; set; }
 

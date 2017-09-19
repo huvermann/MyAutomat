@@ -2,7 +2,7 @@
 
 namespace Colaautomat.Core.Models
 {
-    public interface IWarenausgabeModel
+    public interface IWarenausgabeService
     {
         bool ProduktAusgabe(IProduct product, IMaschinenLog log);
     }

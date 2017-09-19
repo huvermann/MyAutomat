@@ -15,15 +15,15 @@ namespace Colaautomat.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         #region Constructor
-        private IProductStorage _productStorage;
+        private IProductStorageService _productStorage;
         private IOrderService _orderService;
         
 
         public MainWindowViewModel(
             IServiceLocator serviceLocator,
             IAutomatInputManager inputManager,
-            IGeldspeicherModel geldspeicher, 
-            IProductStorage productstorage, 
+            IGeldspeicherService geldspeicher, 
+            IProductStorageService productstorage, 
             IMaschinenLog maschinenLog, 
             IGeldausgabeSimulator geldausgabe, 
             IWarenausgabeSimulator warenausgabe,
@@ -43,11 +43,6 @@ namespace Colaautomat.ViewModels
             OrderProductCommand = new DelegateCommand<string>(async (n) => await OnProductSelected(n));
             RueckgabeCommand = new DelegateCommand(async () => OnGeldrueckgabe());
             ClearOutputCommand = new DelegateCommand(async () => await OnClearOutputAsync());
-        }
-
-        public void OnExit()
-        {
-            _automatInputManager.ShutDown();
         }
 
         async Task OnClearOutputAsync()
@@ -83,10 +78,10 @@ namespace Colaautomat.ViewModels
         #endregion
 
         #region Properties
-        private IGeldspeicherModel _geldspeicher;
+        private IGeldspeicherService _geldspeicher;
         
 
-        public IGeldspeicherModel Geldspeicher
+        public IGeldspeicherService Geldspeicher
         {
             get { return _geldspeicher; }
             set { SetProperty(ref _geldspeicher, value); }

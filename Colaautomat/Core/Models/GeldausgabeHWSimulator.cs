@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
-    public class GeldausgabeSimulator : BindableBase, IGeldausgabeModel, IGeldausgabeSimulator
+    public class GeldausgabeHWSimulator : BindableBase, IGeldausgabeService, IGeldausgabeSimulator
     {
         #region Constructor
 
-        public GeldausgabeSimulator()
+        public GeldausgabeHWSimulator()
         {
             _geldausgabeInfo = new ObservableCollection<string>();
         }
         #endregion
 
-        public void GeldRueckgabe(IGeldspeicherModel geldspeicher, IMaschinenLog log)
+        public void GeldRueckgabe(IGeldspeicherService geldspeicher, IMaschinenLog log)
         {
             log.AddLogEntry(string.Format("Der Geldspeicher wird geleert."));
             double summe = geldspeicher.Geldbetrag;
