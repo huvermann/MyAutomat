@@ -132,7 +132,9 @@
     <None Include="..\Documentation\AutomatenModell.docx">
       <Link>Documentation\AutomatenModell.docx</Link>
     </None>
-    <None Include="Documentation\ViewModel.eap" />
+    <None Include="..\Documentation\ColaAutomatModell.eap">
+      <Link>Documentation\ColaAutomatModell.eap</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
