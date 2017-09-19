@@ -11,16 +11,18 @@ namespace Colaautomat.Core.Models
     public class GeldausgabeHWSimulator : BindableBase, IGeldausgabeService, IGeldausgabeSimulator
     {
         #region Constructor
+        private IMaschinenLog _logger;
 
-        public GeldausgabeHWSimulator()
+        public GeldausgabeHWSimulator(IMaschinenLog logger)
         {
             _geldausgabeInfo = new ObservableCollection<string>();
+            _logger = logger;
         }
         #endregion
 
-        public void GeldRueckgabe(IGeldspeicherService geldspeicher, IMaschinenLog log)
+        public void GeldRueckgabe(IGeldspeicherService geldspeicher)
         {
-            log.AddLogEntry(string.Format("Der Geldspeicher wird geleert."));
+            _logger.AddLogEntry(string.Format("Der Geldspeicher wird geleert."));
             double summe = geldspeicher.Geldbetrag;
             GeldausgabeInfo.Add(string.Format("Pling! {0}€ werden ausgeworfen!", summe));
             geldspeicher.Geldbetrag = 0;

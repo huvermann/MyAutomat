@@ -4,6 +4,6 @@ namespace Colaautomat.Core.Models
 {
     public interface IGeldausgabeService
     {
-        void GeldRueckgabe(IGeldspeicherService geldspeicher, IMaschinenLog log);
+        void GeldRueckgabe(IGeldspeicherService geldspeicher);
     }
 }

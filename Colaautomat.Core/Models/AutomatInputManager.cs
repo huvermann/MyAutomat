@@ -55,7 +55,7 @@ namespace Colaautomat.Core.Models
             {
                 if (!IsOrdering)
                 {
-                    _geldausgabe.GeldRueckgabe(_geldspeicher, _log);
+                    _geldausgabe.GeldRueckgabe(_geldspeicher);
                 }
                 
             }

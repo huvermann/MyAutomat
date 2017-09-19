@@ -31,7 +31,7 @@ namespace Colaautomat.Core.Models
 
                 }
                 await Task.Delay(500);
-                geldausgabe.GeldRueckgabe(geldspeicher, _machineLog);
+                geldausgabe.GeldRueckgabe(geldspeicher);
 
             }
             else

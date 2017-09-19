@@ -85,7 +85,7 @@ namespace ModelTests
             product.Price = 1;
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
             _WarenausgabeMock.Setup(w => w.ProduktAusgabe(product)).Returns(true);
-            _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object, _logMock.Object));
+            _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object));
             _geldspeicherMock.Setup(g => g.CollectProductPrice(product));
 
             await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
@@ -120,7 +120,7 @@ namespace ModelTests
             Product product = new Product() { Count = 1, Price = 1, ProductName = "Kimonade" };
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
             _WarenausgabeMock.Setup(w => w.ProduktAusgabe(product)).Returns(false);
-            _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object, _logMock.Object));
+            _geldausgabeMock.Setup(ga => ga.GeldRueckgabe(_geldspeicherMock.Object));
             await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
     }
