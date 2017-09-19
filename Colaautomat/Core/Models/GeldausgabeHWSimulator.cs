@@ -22,7 +22,7 @@ namespace Colaautomat.Core.Models
 
         public void GeldRueckgabe(IGeldspeicherService geldspeicher)
         {
-            _logger.AddLogEntry(string.Format("Der Geldspeicher wird geleert."));
+            _logger.AddLogEntry("GeldausgabeHWSimulator", string.Format("Der Geldspeicher wird geleert."));
             double summe = geldspeicher.Geldbetrag;
             GeldausgabeInfo.Add(string.Format("Pling! {0}€ werden ausgeworfen!", summe));
             geldspeicher.Geldbetrag = 0;

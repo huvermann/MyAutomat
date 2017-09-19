@@ -6,6 +6,6 @@ namespace Colaautomat.Core.Models
     {
         ObservableCollection<string> LogEntries { get; set; }
 
-        void AddLogEntry(string entry);
+        void AddLogEntry(string moduleName, string entry);
     }
 }

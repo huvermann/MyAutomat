@@ -88,7 +88,7 @@ namespace Colaautomat.Core.Models
 
         private void HandleError(AutomatException exception)
         {
-            _logger.AddLogEntry(string.Format("Fehler aufgetreten: {0}", exception.Message));
+            _logger.AddLogEntry("InputManager", string.Format("Fehler aufgetreten: {0}", exception.Message));
         }
 
         private bool _isOrdering;

@@ -96,10 +96,11 @@ namespace ModelTests
         {
             Product product = new Product() { Count = 0, Price = 1, ProductName = "Kimonade" };
             string expected = string.Format("Keine {0} mehr da!", product.ProductName);
+            string expectedModuleName = "OrderService";
             product.Count = 0;
             product.Price = 1;
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(true);
-            _logMock.Setup(log => log.AddLogEntry(expected));
+            _logMock.Setup(log => log.AddLogEntry(expectedModuleName, expected));
             await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
 
         }
@@ -109,8 +110,9 @@ namespace ModelTests
         {
             Product product = new Product() { Count = 1, Price = 1, ProductName = "Kimonade" };
             string expected = "Nicht genug Geld im Automaten um das Produkt zu kaufen.";
+            string expectedModuleName = "OrderService";
             _geldspeicherMock.Setup(g => g.CanBuyProduct(product)).Returns(false);
-            _logMock.Setup(log => log.AddLogEntry(expected));
+            _logMock.Setup(log => log.AddLogEntry(expectedModuleName, expected));
             await _orderService.OrderProductAsync(product, _geldspeicherMock.Object, _geldausgabeMock.Object, _WarenausgabeMock.Object);
         }
 

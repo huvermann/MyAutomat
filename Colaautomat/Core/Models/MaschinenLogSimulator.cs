@@ -23,9 +23,9 @@ namespace Colaautomat.Core.Models
             set { SetProperty(ref _logEntries, value); }
         }
 
-        public void AddLogEntry(string entry)
+        public void AddLogEntry(string moduleName, string entry)
         {
-            LogEntries.Add(entry);
+            LogEntries.Add(string.Format("[{0}] {1}", moduleName, entry));
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Colaautomat.Core.Models
             else
             {
                 await Task.Delay(500);
-                _machineLog.AddLogEntry(CheckError(product, geldspeicher));
+                _machineLog.AddLogEntry("OrderService", CheckError(product, geldspeicher));
             }
 
         }

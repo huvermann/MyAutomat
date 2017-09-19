@@ -24,7 +24,7 @@ namespace Colaautomat.Core.Models
         {
             
             await Task.Delay(2000); // Zeit vertrödeln
-            _logger.AddLogEntry(string.Format("{0}€ wurden in den Geldspeicher gelegt.", wert));
+            _logger.AddLogEntry("GeldspeicherService", string.Format("{0}€ wurden in den Geldspeicher gelegt.", wert));
             await Task.Delay(500); // Mehr Zeit vertrödeln
             Geldbetrag += wert;
         }
@@ -32,7 +32,7 @@ namespace Colaautomat.Core.Models
         public void CollectProductPrice(IProduct product)
         {
             Geldbetrag -= product.Price;
-            _logger.AddLogEntry(string.Format("Der Geldspeicher enthält nun: {0}€", _geldBetrag));
+            _logger.AddLogEntry("GeldspeicherService", string.Format("Der Geldspeicher enthält nun: {0}€", _geldBetrag));
         }
 
         public bool CanBuyProduct(IProduct product)

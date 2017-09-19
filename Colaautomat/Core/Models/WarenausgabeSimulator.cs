@@ -27,7 +27,7 @@ namespace Colaautomat.Core.Models
             try
             {
                 // Hier muss das Produkt freigegeben werden
-                _logger.AddLogEntry(string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
+                _logger.AddLogEntry("WarenausgabeSimulator", string.Format("Mechanik für Produkt {0} wird geöffnet...", product.ProductName));
 
                 _warenausgabeFach.Add(string.Format("{0} ist im Ausgabefach", product.ProductName));
                 _eventAggregator.GetEvent<ProductDeliveredMessage>().Publish(product);
@@ -36,7 +36,7 @@ namespace Colaautomat.Core.Models
             catch (Exception)
             {
 
-                _logger.AddLogEntry("Die Dose klemmt oder kann nicht augegeben werden.");
+                _logger.AddLogEntry("WarenausgabeSimulator", "Die Dose klemmt oder kann nicht augegeben werden.");
                 success = false;
             }
            
