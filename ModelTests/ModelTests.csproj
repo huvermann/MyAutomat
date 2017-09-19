@@ -73,8 +73,13 @@
       <Project>{BB109C18-D810-4159-B048-8A0740F386B8}</Project>
       <Name>Colaautomat</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UglySodaMachineSimulator\UglySodaMachineSimulator.csproj">
+      <Project>{f3c4275e-e2fe-4e18-92ad-bf2a6d35b963}</Project>
+      <Name>UglySodaMachineSimulator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
