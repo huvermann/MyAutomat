@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using UglySodaMachineSimulator;
 
 namespace Colaautomat
 {
@@ -17,7 +18,7 @@ namespace Colaautomat
         {
             base.OnStartup(e);
 
-            var bootstrapper = new Bootstrapper();
+            var bootstrapper = new SimulatorBootstrapper();
             bootstrapper.Run();
         }
     }

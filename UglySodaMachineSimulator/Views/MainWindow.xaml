@@ -41,7 +41,7 @@
                 <Button.Content>
                     <StackPanel>
                         <TextBlock Text="Cola (0.2 ct)" />
-                        <Image Source="/Colaautomat;component/Images/cola.jpg" Height="100" />
+                        <Image Source="/UglySodaMachineSimulator;Component/Images/cola.jpg" Height="100" />
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -49,7 +49,7 @@
                 <Button.Content>
                     <StackPanel>
                         <TextBlock Text="Fanta (0.60 ct)" />
-                        <Image Source="/Colaautomat;component/Images/fanta.jpg" Height="100" />
+                        <Image Source="/UglySodaMachineSimulator;component/Images/fanta.jpg" Height="100" />
                     </StackPanel>
                 </Button.Content>
             </Button>
@@ -57,7 +57,7 @@
                 <Button.Content>
                     <StackPanel>
                         <TextBlock Text="Cola Zero (1€)" />
-                        <Image Source="/Colaautomat;component/Images/colazero.jpg" Height="100" />
+                        <Image Source="/UglySodaMachineSimulator;component/Images/colazero.jpg" Height="100" />
                     </StackPanel>
                 </Button.Content>
             </Button>

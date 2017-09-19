@@ -12,14 +12,14 @@ using System.Windows.Input;
 
 namespace Colaautomat.ViewModels
 {
-    public class SimulatorViewModel : BindableBase
+    public class MainWindowViewModel : BindableBase
     {
         #region Constructor
         private IProductStorageService _productStorage;
         private IOrderService _orderService;
         
 
-        public SimulatorViewModel(
+        public MainWindowViewModel(
             IServiceLocator serviceLocator,
             IAutomatInputManager inputManager,
             IGeldspeicherService geldspeicher, 
