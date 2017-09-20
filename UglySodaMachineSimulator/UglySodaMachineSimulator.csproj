@@ -106,6 +106,7 @@
     <Compile Include="Converters\InversBooleanConverter.cs" />
     <Compile Include="Models\GeldausgabeHWSimulator.cs" />
     <Compile Include="Models\IGeldausgabeSimulator.cs" />
+    <Compile Include="Models\IProductStorageSimulator.cs" />
     <Compile Include="Models\IWarenausgabeSimulator.cs" />
     <Compile Include="Models\MaschinenLogSimulator.cs" />
     <Compile Include="Models\ProductStorageSimulator.cs" />

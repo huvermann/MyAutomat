@@ -13,6 +13,12 @@ namespace ModelTests
         public void TestIinitializer()
         {
             _storage = new ProductStorageSimulator();
+
+        }
+
+        public void OnTestInitialize()
+        {
+            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
         }
 
         [TestMethod]
