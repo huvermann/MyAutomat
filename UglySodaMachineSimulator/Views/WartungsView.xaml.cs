@@ -10,29 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Prism.Events;
-using Colaautomat.Core.Messages;
 
 namespace UglySodaMachineSimulator.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WartungsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WartungsView : UserControl
     {
-        private IEventAggregator _eventAggregator;
-
-        public MainWindow(IEventAggregator eventAggregator)
+        public WartungsView()
         {
-            _eventAggregator = eventAggregator;
             InitializeComponent();
-        }
-
-        protected override void OnClosed(EventArgs e)
-        {
-            _eventAggregator.GetEvent<CloseApplicationMessage>().Publish();
-            base.OnClosed(e);
         }
     }
 }

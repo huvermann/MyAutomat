@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="UglySodaMachineSimulator.Views.AutomatenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UglySodaMachineSimulator.Views"
+             xmlns:converters="clr-namespace:UglySodaMachineSimulator.Converters"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style  TargetType="Button">
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+        <converters:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"  Grid.Row="0" >
+            <TextBlock Text="Münzen" />
+            <Button Content="10" Command="{Binding MuenzCommand}" CommandParameter="0.1" />
+            <Button Content="20"  Command="{Binding MuenzCommand}" CommandParameter="0.2" />
+            <Button Content="50"  Command="{Binding MuenzCommand}" CommandParameter="0.5" />
+            <Button Content="1€"  Command="{Binding MuenzCommand}" CommandParameter="1" />
+            <Button Content="Geldrückgabe" Command="{Binding RueckgabeCommand}" IsEnabled="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource InverseBooleanConverter}}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" IsEnabled="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource InverseBooleanConverter}}">
+            <Button Command="{Binding OrderProductCommand}" CommandParameter="cola"  >
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Cola (0.2 ct)" />
+                        <Image Source="/UglySodaMachineSimulator;Component/Images/cola.jpg" Height="100" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command="{Binding OrderProductCommand}" CommandParameter="fanta" >
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Fanta (0.60 ct)" />
+                        <Image Source="/UglySodaMachineSimulator;component/Images/fanta.jpg" Height="100" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Command="{Binding OrderProductCommand}" CommandParameter="colazero" >
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock Text="Cola Zero (1€)" />
+                        <Image Source="/UglySodaMachineSimulator;component/Images/colazero.jpg" Height="100" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Content="Clear Output" Command="{Binding ClearOutputCommand}" Margin="40,16,16,16" Padding="8" />
+            <Button Content="Service" Command="{Binding ServiceCommand}" Margin="40,16,16,16" Padding="8" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+            <TextBlock Text="Geldspeicher:" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding Geldspeicher.Geldbetrag, Mode=TwoWay}" TextAlignment="Right" Width="200" Background="Red"  Margin="4" FontSize="45" />
+            <Grid Visibility="{Binding AutomatInputManager.IsOrdering, Converter={StaticResource BoolToVisibilityConverter}}" >
+
+                <ProgressBar  Height="40" Width="400"  IsIndeterminate="True" />
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding ProgressMessage}" />
+
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Geldausgabe:" />
+
+            <TextBlock Text="Warenausgabe:" Grid.Column="2" />
+            <ListView ItemsSource="{Binding Geldausgabe.GeldausgabeInfo}" Grid.Row="1" Grid.Column="0" Height="100" />
+            <ListView ItemsSource="{Binding Warenausgabe.WarenausgabeFach}" Grid.Row="1" Height="100" Grid.Column="1" />
+
+            <TextBlock Text="Maschinen-Log" Grid.Row="2" />
+            <ListView ItemsSource="{Binding MaschinenLog.LogEntries}" Grid.Row="3" Grid.ColumnSpan="2" Height="200" />
+            <TextBlock Text="Warenbestand" Grid.Row="4" />
+            <ListView ItemsSource="{Binding MaschinenLog.LogEntries}" Grid.Row="5" Grid.ColumnSpan="2" Height="150" />
+        </Grid>
+    </Grid>
+</UserControl>
