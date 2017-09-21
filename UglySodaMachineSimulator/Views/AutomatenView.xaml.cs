@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Colaautomat.Core.Messages;
+using Prism.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Colaautomat.Core.Models;
 
 namespace UglySodaMachineSimulator.Views
 {
@@ -20,9 +23,15 @@ namespace UglySodaMachineSimulator.Views
     /// </summary>
     public partial class AutomatenView : UserControl
     {
-        public AutomatenView()
+        public AutomatenView(IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            eventAggregator.GetEvent<ProductDeliveredMessage>().Subscribe(ProductsChanged);
+        }
+
+        private void ProductsChanged(IProduct obj)
+        {
+            Warenbestandsliste.Items.Refresh();
         }
     }
 }

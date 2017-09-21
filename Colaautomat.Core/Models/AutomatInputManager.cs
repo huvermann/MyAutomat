@@ -34,6 +34,7 @@ namespace Colaautomat.Core.Models
                     await _orderService.OrderProductAsync(product);
                     IsOrdering = false;
                 }
+               
             }
             catch (AutomatException e)
             {
@@ -66,13 +67,7 @@ namespace Colaautomat.Core.Models
         {
             try
             {
-                if (!IsOrdering)
-                {
-                    IsOrdering = true;
-                    await _orderService.CoinInputAsync(amount);
-                    IsOrdering = false;
-                }
-
+                await _orderService.CoinInputAsync(amount);
                 return true;
             }
             catch (AutomatException e)

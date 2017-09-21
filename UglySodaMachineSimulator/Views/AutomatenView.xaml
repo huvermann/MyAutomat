@@ -104,14 +104,14 @@
             <TextBlock Text="Maschinen-Log" Grid.Row="2" />
             <ListView ItemsSource="{Binding MaschinenLog.LogEntries}" Grid.Row="3" Grid.ColumnSpan="2" Height="200" />
             <TextBlock Text="Warenbestand" Grid.Row="4" />
-            <ListView ItemsSource="{Binding Products.ProductCatalog}" Grid.Row="5" Grid.ColumnSpan="2" Height="150" >
+            <ListView x:Name="Warenbestandsliste" ItemsSource="{Binding Products.ProductCatalog}" Grid.Row="5" Grid.ColumnSpan="2" Height="150" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock >
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} Bestand: {1}">
                                     <Binding Path="ProductName" />
-                                    <Binding Path="Count" Mode="TwoWay" />
+                                    <Binding Path="Count" UpdateSourceTrigger="PropertyChanged" />
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
