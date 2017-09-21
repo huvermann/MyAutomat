@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Colaautomat.Core.Messages;
 using Prism.Events;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 
 namespace Colaautomat.JoystickExtension
 {
@@ -96,6 +97,11 @@ namespace Colaautomat.JoystickExtension
                     }
                 }
             } 
+        }
+
+        public static void ConfigureContainer(IUnityContainer container)
+        {
+            container.RegisterInstance<JoystickInputExtension>(container.Resolve<JoystickInputExtension>());
         }
     }
 }
