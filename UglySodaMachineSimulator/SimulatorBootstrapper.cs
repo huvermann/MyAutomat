@@ -30,11 +30,12 @@ namespace UglySodaMachineSimulator
             Container.RegisterType<IGeldausgabeService, GeldausgabeHWSimulator>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IGeldspeicherService, GeldspeicherService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IProductStorageService, ProductStorageSimulator>(new ContainerControlledLifetimeManager());
+            Container.RegisterInstance<IProductStorageSimulator>((IProductStorageSimulator)Container.Resolve<IProductStorageService>());
             Container.RegisterType<IOrderService, OrderService>(new ContainerControlledLifetimeManager());
             Container.RegisterInstance<IGeldausgabeSimulator>((GeldausgabeHWSimulator) Container.Resolve<IGeldausgabeService>());
             Container.RegisterInstance<IWarenausgabeSimulator>((WarenausgabeSimulator) Container.Resolve<IWarenausgabeService>());
             Container.RegisterType<IAutomatInputManager, AutomatInputManager>(new ContainerControlledLifetimeManager());            
-
+            
             Container.RegisterTypeForNavigation<AutomatenView>("AutomatenView");
             Container.RegisterTypeForNavigation<WartungsView>("WartungsView");
 
