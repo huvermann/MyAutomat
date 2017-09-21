@@ -20,12 +20,13 @@ namespace Colaautomat.Core.Models
         }
         public void FillStorage(int cola, int fanta, int colazero)
         {
+            string resources = @"/UglySodaMachineSimulator;component/Images/";
             // Lager auffüllen ist hier nur zu demozwecken implementier.
             // Der Lagerbestand durch den Bediener oder Sensor eingestellt werden.
             _productCatalog = new ObservableCollection<IProduct>();
-            _productCatalog.Add(new Product() { Identifier = "cola", Count = cola, Price = 0.2, ProductName = "River Cola", ImageSource = "cola.jpg" });
-            _productCatalog.Add(new Product() { Identifier = "fanta", Count = fanta, Price = 0.6, ProductName = "Fanta", ImageSource = "fanta.jpg" });
-            _productCatalog.Add(new Product() { Identifier = "colazero", Count = colazero, Price = 1, ProductName = "Cola Zero", ImageSource = "colazero.jpg" });
+            _productCatalog.Add(new Product() { Identifier = "cola", Count = cola, Price = 0.2, ProductName = "River Cola", ImageSource = resources + "cola.jpg"});
+            _productCatalog.Add(new Product() { Identifier = "fanta", Count = fanta, Price = 0.6, ProductName = "Fanta", ImageSource = resources +  "fanta.jpg" });
+            _productCatalog.Add(new Product() { Identifier = "colazero", Count = colazero, Price = 1, ProductName = "Cola Zero", ImageSource = resources + "colazero.jpg" });
         }
 
         public IProduct getProductByName(string productname)

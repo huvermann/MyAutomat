@@ -42,22 +42,16 @@ namespace UglySodaMachineSimulator.ViewModels
             _progressMessage = "Bitte warten";
 
             MuenzCommand = new DelegateCommand<string>(async (m) => await OnMuenzeinwurf(m));
-            OrderProductCommand = new DelegateCommand<string>(async (n) => await OnProductSelected(n));
+            OrderProductCommand = new DelegateCommand<IProduct>(async (n) => await OnProductSelected(n));
             RueckgabeCommand = new DelegateCommand(async () => OnGeldrueckgabe());
             ClearOutputCommand = new DelegateCommand(async () => await OnClearOutputAsync());
             ServiceCommand = new DelegateCommand(NavigateToService);
-
         }
 
         private void NavigateToService()
         {
             _navigationService.RequestNavigate("Shell", "WartungsView");
         }
-
-        //private Task NavigateToServiceView()
-        //{
-        //    _navigationService.RequestNavigate()
-        //}
 
         async Task OnClearOutputAsync()
         {
@@ -72,9 +66,8 @@ namespace UglySodaMachineSimulator.ViewModels
         }
 
         #region EventHandler
-        async Task OnProductSelected(string productName)
+        async Task OnProductSelected(IProduct product)
         {
-            var product = _productStorage.getProductByName(productName);
             await AutomatInputManager.SelectProduct(product);
         }
 
@@ -151,7 +144,7 @@ namespace UglySodaMachineSimulator.ViewModels
 
         #region Commands
         public DelegateCommand<string> MuenzCommand { get; set; }
-        public DelegateCommand<string> OrderProductCommand { get; set; }
+        public DelegateCommand<IProduct> OrderProductCommand { get; set; }
         public DelegateCommand RueckgabeCommand { get; set; }
         public DelegateCommand ClearOutputCommand { get; set; }
         public DelegateCommand ServiceCommand { get; set; }

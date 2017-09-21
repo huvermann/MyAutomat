@@ -104,6 +104,7 @@
   <ItemGroup>
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InversBooleanConverter.cs" />
+    <Compile Include="Converters\StringToImageSourceConverter.cs" />
     <Compile Include="Models\GeldausgabeHWSimulator.cs" />
     <Compile Include="Models\IGeldausgabeSimulator.cs" />
     <Compile Include="Models\IProductStorageSimulator.cs" />
