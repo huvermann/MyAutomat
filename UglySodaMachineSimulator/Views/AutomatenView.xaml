@@ -86,16 +86,17 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
+            <!--Geldrückgabe und Warenausgabefach anzeigen lassen-->
             <TextBlock Text="Geldausgabe:" />
-
             <TextBlock Text="Warenausgabe:" Grid.Column="2" />
             <ListView ItemsSource="{Binding Geldausgabe.GeldausgabeInfo}" Grid.Row="1" Grid.Column="0" Height="100" />
             <ListView ItemsSource="{Binding Warenausgabe.WarenausgabeFach}" Grid.Row="1" Height="100" Grid.Column="1" />
-
+            <!--Die Log-Datei der Maschine anzeigen-->
             <TextBlock Text="Maschinen-Log" Grid.Row="2" />
             <ListView ItemsSource="{Binding MaschinenLog.LogEntries}" Grid.Row="3" Grid.ColumnSpan="2" Height="200" />
             <TextBlock Text="Warenbestand" Grid.Row="4" />
-            <ListView ItemsSource="{Binding MaschinenLog.LogEntries}" Grid.Row="5" Grid.ColumnSpan="2" Height="150" />
+            <ListView ItemsSource="{Binding Products.ProductCatalog}" Grid.Row="5" Grid.ColumnSpan="2" Height="150" >
+            </ListView>
         </Grid>
     </Grid>
 </UserControl>

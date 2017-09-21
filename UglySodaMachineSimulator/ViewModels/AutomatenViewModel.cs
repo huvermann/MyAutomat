@@ -16,7 +16,7 @@ namespace UglySodaMachineSimulator.ViewModels
 {
     public class AutomatenViewModel : BindableBase
     {
-        private IProductStorageService _productStorage;
+        private IProductStorageSimulator _productStorage;
         private IOrderService _orderService;
         private IRegionManager _navigationService;
         public AutomatenViewModel(
@@ -24,7 +24,7 @@ namespace UglySodaMachineSimulator.ViewModels
             IRegionManager navigationService,
             IAutomatInputManager inputManager,
             IGeldspeicherService geldspeicher,
-            IProductStorageService productstorage,
+            IProductStorageSimulator productstorage,
             IMaschinenLog maschinenLog,
             IGeldausgabeSimulator geldausgabe,
             IWarenausgabeSimulator warenausgabe,
@@ -138,6 +138,14 @@ namespace UglySodaMachineSimulator.ViewModels
             get { return _automatInputManager; }
             set { SetProperty(ref _automatInputManager, value); }
         }
+
+        
+        public IProductStorageSimulator Products
+        {
+            get { return _productStorage; }
+            set { SetProperty(ref _productStorage, value); }
+        }
+
 
         #endregion
 
