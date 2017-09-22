@@ -13,7 +13,7 @@
             <Style TargetType="ListViewItem">
                 <Style.Triggers>
                     <Trigger Property="ItemsControl.AlternationIndex"  Value="0">
-                        <Setter Property="Background" Value="LightBlue" />
+                        <Setter Property="Background" Value="LightCoral" />
                     </Trigger>
                     <Trigger Property="ItemsControl.AlternationIndex"  Value="1">
                         <Setter Property="Background" Value="LightGray" />
@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Wartungsview" VerticalAlignment="Top" />
-        <ListView Grid.Row="1" VerticalAlignment="Top" ItemsSource="{Binding Storage.ProductCatalog}" Height="300" AlternationCount="2" >
+        <ListView Grid.Row="1" VerticalAlignment="Top" ItemsSource="{Binding Storage.ProductCatalog}" Height="300" AlternationCount="2" FontSize="24" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Artikelname" DisplayMemberBinding="{Binding ProductName}"/>
@@ -36,7 +36,7 @@
                     <GridViewColumn Header="Anzahl" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBox Text="{Binding Count}" Width="30" />
+                                <TextBox Text="{Binding Count}" Width="50" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
