@@ -20,7 +20,6 @@ namespace UglySodaMachineSimulator.ViewModels
         private IOrderService _orderService;
         private IRegionManager _navigationService;
         public AutomatenViewModel(
-             IServiceLocator serviceLocator,
             IRegionManager navigationService,
             IAutomatInputManager inputManager,
             IGeldspeicherService geldspeicher,
