@@ -116,6 +116,9 @@
     <None Include="..\Documentation\ColaAutomatModell.eap">
       <Link>Documentation\ColaAutomatModell.eap</Link>
     </None>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -142,6 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewFolder1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Documentation\Systemkomponenten.png">
+      <Link>Documentation\Systemkomponenten.png</Link>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
