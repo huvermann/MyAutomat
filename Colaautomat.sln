@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colaautomat", "Colaautomat\Colaautomat.csproj", "{BB109C18-D810-4159-B048-8A0740F386B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\ModelTests.csproj", "{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colaautomat.Core", "Colaautomat.Core\Colaautomat.Core.csproj", "{2BBC2E17-9B7D-4C19-A8D9-64778F827A2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colaautomat.JoystickExtension", "Colaautomat.JoystickExtension\Colaautomat.JoystickExtension.csproj", "{2A9D4934-718F-4F68-ACAC-303EE88CDCC4}"
@@ -24,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		appveyor.yml = appveyor.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit.ModelTests", "NUnit.ModelTests\NUnit.ModelTests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +34,6 @@ Global
 		{BB109C18-D810-4159-B048-8A0740F386B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB109C18-D810-4159-B048-8A0740F386B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB109C18-D810-4159-B048-8A0740F386B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2BBC2E17-9B7D-4C19-A8D9-64778F827A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2BBC2E17-9B7D-4C19-A8D9-64778F827A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BBC2E17-9B7D-4C19-A8D9-64778F827A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,13 +46,17 @@ Global
 		{F3C4275E-E2FE-4E18-92AD-BF2A6D35B963}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3C4275E-E2FE-4E18-92AD-BF2A6D35B963}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3C4275E-E2FE-4E18-92AD-BF2A6D35B963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8C597D5F-33E6-43B9-A4D4-0ED30BB6269B} = {B15F2939-7A20-45D1-BC03-3BE554F0F46B}
 		{2A9D4934-718F-4F68-ACAC-303EE88CDCC4} = {F8F59D82-E33E-49CB-B497-A95E1F3C1401}
 		{F3C4275E-E2FE-4E18-92AD-BF2A6D35B963} = {8ACE9077-AA1F-4481-A1A7-7E3D67DEC466}
+		{8EDF4429-251A-416D-BB68-93F227191BCF} = {B15F2939-7A20-45D1-BC03-3BE554F0F46B}
 	EndGlobalSection
 EndGlobal

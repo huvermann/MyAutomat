@@ -1,34 +1,40 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Colaautomat.Core.Models;
+﻿using Colaautomat.Core.Models;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ModelTests
+namespace NUnit.ModelTests
 {
-    [TestClass]
-    public class ProductStorageTests
+    [TestFixture]
+    public class ProductStorageTestClass
     {
         private ProductStorageSimulator _storage;
 
-        [TestInitialize]
-        public void TestIinitializer()
+        [SetUp]
+        protected void Setup()
         {
             _storage = new ProductStorageSimulator();
-
         }
-
-        public void OnTestInitialize()
+        [Test]
+        public void TestCanCreateStorage()
         {
-            UriParser.Register(new GenericUriParser(GenericUriParserOptions.GenericAuthority), "pack", -1);
+            // TODO: Add your test code here
+            Assert.IsNotNull(_storage);
         }
 
-        [TestMethod]
+        [Test]
         public void GetProductReturnsColaProductTest()
         {
             ProductStorageSimulator storage = new ProductStorageSimulator();
             var product = storage.getProductByName("cola");
-            Assert.IsInstanceOfType(product, typeof(Product));
+            //Assert.IsInstanceOfType(product, typeof(Product));
+            Assert.IsInstanceOf<Product>(product);
         }
-        [TestMethod]
+
+        [Test]
         public void FillStorageTest()
         {
             int expectedCola = 10;

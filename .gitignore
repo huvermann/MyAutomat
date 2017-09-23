@@ -16,3 +16,5 @@
 /.vs/Colaautomat/v15
 /UglySodaMachineSimulator/bin/Debug
 /UglySodaMachineSimulator/obj/Debug
+/NUnit.ModelTests/bin/Debug
+/NUnit.ModelTests/obj/Debug
