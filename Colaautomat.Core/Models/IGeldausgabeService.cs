@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Colaautomat.Core.Models
 {
     public interface IGeldausgabeService
     {
-        void GeldRueckgabe(IGeldspeicherService geldspeicher);
+        Task<bool> GeldRueckgabe(IGeldspeicherService geldspeicher);
     }
 }

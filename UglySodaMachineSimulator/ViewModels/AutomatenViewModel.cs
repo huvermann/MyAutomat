@@ -40,22 +40,21 @@ namespace UglySodaMachineSimulator.ViewModels
 
             _progressMessage = "Bitte warten";
 
-            MuenzCommand = new DelegateCommand<string>(async (m) => await OnMuenzeinwurf(m));
-            OrderProductCommand = new DelegateCommand<IProduct>(async (n) => await OnProductSelected(n));
-            RueckgabeCommand = new DelegateCommand(async () => OnGeldrueckgabe());
-            ClearOutputCommand = new DelegateCommand(async () => await OnClearOutputAsync());
+            MuenzCommand = new DelegateCommand<string>(OnMuenzeinwurf);
+            OrderProductCommand = new DelegateCommand<IProduct>(OnProductSelected);
+            RueckgabeCommand = new DelegateCommand(OnGeldrueckgabe);
+            ClearOutputCommand = new DelegateCommand(OnClearOutput);
             ServiceCommand = new DelegateCommand(NavigateToService);
+
         }
+
+        
 
         private void NavigateToService()
         {
             _navigationService.RequestNavigate("Shell", "WartungsView");
         }
 
-        async Task OnClearOutputAsync()
-        {
-            OnClearOutput();
-        }
 
         private void OnClearOutput()
         {
@@ -65,20 +64,33 @@ namespace UglySodaMachineSimulator.ViewModels
         }
 
         #region EventHandler
-        async Task OnProductSelected(IProduct product)
+        private void OnProductSelected(IProduct product)
         {
-            await AutomatInputManager.SelectProduct(product);
+            Func<Task> testFunc = async () =>
+            {
+                var result = await AutomatInputManager.SelectProduct(product);
+            };
+            testFunc.Invoke();
         }
 
-        async Task OnMuenzeinwurf(string Muenze)
+        private void OnMuenzeinwurf(string Muenze)
         {
-            double wert = Double.Parse(Muenze, CultureInfo.InvariantCulture);
-            await AutomatInputManager.CoinInput(wert);
+            Func<Task> coinInputFunc = async () =>
+            {
+                double wert = Double.Parse(Muenze, CultureInfo.InvariantCulture);
+                await AutomatInputManager.CoinInput(wert);
+            };
+            coinInputFunc.Invoke();
         }
 
-        async Task OnGeldrueckgabe()
+        private void OnGeldrueckgabe()
         {
-            await AutomatInputManager.ReturnMoneyButton();
+            Func<Task> returnMoneyButtonAsync = async () =>
+            {
+                await AutomatInputManager.ReturnMoneyButton();
+            };
+            returnMoneyButtonAsync.Invoke();
+            
         }
         #endregion
 

@@ -22,11 +22,9 @@ namespace Colaautomat.Core.Models
         #region Logic
         public async Task AddCoinAsync(double wert)
         {
-            
-            //await Task.Delay(2000); // Zeit vertrödeln
             _logger.AddLogEntry("GeldspeicherService", string.Format("{0}€ wurden in den Geldspeicher gelegt.", wert));
-            //await Task.Delay(500); // Mehr Zeit vertrödeln
             Geldbetrag += wert;
+            await Task.Delay(10);
         }
 
         public void CollectProductPrice(IProduct product)

@@ -20,12 +20,14 @@ namespace Colaautomat.Core.Models
         }
         #endregion
 
-        public void GeldRueckgabe(IGeldspeicherService geldspeicher)
+        public async Task<bool> GeldRueckgabe(IGeldspeicherService geldspeicher)
         {
             _logger.AddLogEntry("GeldausgabeHWSimulator", string.Format("Der Geldspeicher wird geleert."));
             double summe = geldspeicher.Geldbetrag;
-            GeldausgabeInfo.Add(string.Format("Pling! {0}€ werden ausgeworfen!", summe));
             geldspeicher.Geldbetrag = 0;
+            GeldausgabeInfo.Add(string.Format("Pling! {0}€ werden ausgeworfen!", summe));
+            await Task.Delay(10);
+            return true;
         }
 
         #region Bildschirmausgabe

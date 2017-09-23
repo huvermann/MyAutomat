@@ -9,10 +9,10 @@ namespace Colaautomat.Core.Models
     public class OrderService : IOrderService
     {
         #region Constructor
-        private IMaschinenLog _machineLog;
-        IGeldspeicherService _geldspeicher;
-        IGeldausgabeService _geldausgabe;
-        IWarenausgabeService _warenausgabe;
+        private readonly IMaschinenLog _machineLog;
+        private readonly IGeldspeicherService _geldspeicher;
+        private readonly IGeldausgabeService _geldausgabe;
+        private readonly IWarenausgabeService _warenausgabe;
 
         public OrderService(IMaschinenLog machineLog, IGeldspeicherService geldspeicher, IGeldausgabeService geldausgabe, IWarenausgabeService warenausgabe)
         {
@@ -37,7 +37,7 @@ namespace Colaautomat.Core.Models
 
                 }
                 await Task.Delay(500);
-                _geldausgabe.GeldRueckgabe(_geldspeicher);
+                await _geldausgabe.GeldRueckgabe(_geldspeicher);
 
             }
             else
@@ -66,7 +66,7 @@ namespace Colaautomat.Core.Models
 
         public async Task ReturnAllMoneyAsync()
         {
-            _geldausgabe.GeldRueckgabe(_geldspeicher);
+            await _geldausgabe.GeldRueckgabe(_geldspeicher);
         }
 
         public async Task CoinInputAsync(double amount)
